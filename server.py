@@ -9,8 +9,8 @@ from mcp.server.sse import SseServerTransport
 # 1. Initialize the Core MCP Server
 mcp_server = Server("secure-free-db-server")
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
-MY_SECRET_ACCOUNT_KEY = os.environ.get("MY_SECRET_ACCOUNT_KEY")
+DATABASE_URL = os.environ.get("postgresql://neondb_owner:npg_xQ62JreXnyEz@ep-falling-violet-at7kfokg-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require")
+MY_SECRET_ACCOUNT_KEY = os.environ.get("000000")
 
 def get_db_connection():
     return psycopg2.connect(DATABASE_URL)
