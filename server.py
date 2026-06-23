@@ -99,8 +99,9 @@ async def verify_account_access(request: Request, call_next):
     return await call_next(request)
 
 # Correct official endpoints utilizing SseServerTransport state engines
-@app.get("/sse")
-async def sse_endpoint(request: Request):
+@app.get("/")
+async def root_fallback(request: Request):
+    # This automatically routes root traffic directly to your MCP engine!
     async with sse_transport.connect_sse(request.scope, request.receive, request._send) as queue:
         await mcp_server.run(
             read_stream=queue,
